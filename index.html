@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow | Task Management</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="app">
+        <header class="topbar">
+            <a href="#" class="brand">
+                <span class="brand-icon">✓</span>
+                TaskFlow
+            </a>
+            <span class="tagline">Plan smart. Get things done.</span>
+        </header>
+
+        <main class="container">
+            <section class="welcome">
+                <div>
+                    <p class="eyebrow">YOUR PERSONAL WORKSPACE</p>
+                    <h1>Manage your tasks<span>.</span></h1>
+                    <p class="subtitle">
+                        Stay organized and make every day productive.
+                    </p>
+                </div>
+                <div class="today">
+                    <span>Today</span>
+                    <strong id="todayDate"></strong>
+                </div>
+            </section>
+
+            <section class="stats" aria-label="Task statistics">
+                <article class="stat-card">
+                    <span class="stat-label">Total Tasks</span>
+                    <strong id="totalCount">0</strong>
+                    <span class="stat-note">All your tasks</span>
+                </article>
+
+                <article class="stat-card pending-card">
+                    <span class="stat-label">Pending</span>
+                    <strong id="pendingCount">0</strong>
+                    <span class="stat-note">Waiting to be done</span>
+                </article>
+
+                <article class="stat-card progress-card">
+                    <span class="stat-label">In Progress</span>
+                    <strong id="progressCount">0</strong>
+                    <span class="stat-note">Currently working on</span>
+                </article>
+
+                <article class="stat-card completed-card">
+                    <span class="stat-label">Completed</span>
+                    <strong id="completedCount">0</strong>
+                    <span class="stat-note">Tasks finished</span>
+                </article>
+            </section>
+
+            <section class="workspace">
+                <div class="panel form-panel">
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">GET STARTED</p>
+                            <h2 id="formHeading">Create a task</h2>
+                        </div>
+                        <span class="heading-icon">＋</span>
+                    </div>
+
+                    <form id="taskForm">
+                        <label for="taskTitle">Task title *</label>
+                        <input type="text" id="taskTitle" placeholder="e.g. Complete Java assignment" maxlength="100"
+                            required>
+
+                        <label for="taskDescription">Description</label>
+                        <textarea id="taskDescription" rows="3" maxlength="500"
+                            placeholder="Add some details..."></textarea>
+
+                        <div class="field-row">
+                            <div>
+                                <label for="taskPriority">Priority</label>
+                                <select id="taskPriority">
+                                    <option value="Low">Low</option>
+                                    <option value="Medium" selected>Medium</option>
+                                    <option value="High">High</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="taskDate">Due date</label>
+                                <input type="date" id="taskDate">
+                            </div>
+                        </div>
+
+                        <label for="taskStatus">Status</label>
+                        <select id="taskStatus">
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+
+                        <div class="form-actions">
+                            <button type="submit" class="primary-btn" id="saveBtn">
+                                <span>＋</span> Add Task
+                            </button>
+                            <button type="button" class="secondary-btn hidden" id="cancelEditBtn">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="panel tasks-panel">
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">YOUR WORKSPACE</p>
+                            <h2>My tasks</h2>
+                        </div>
+                        <span class="task-total" id="visibleCount">0 tasks</span>
+                    </div>
+
+                    <div class="toolbar">
+                        <div class="search-box">
+                            <span aria-hidden="true">⌕</span>
+                            <input type="search" id="searchInput" placeholder="Search tasks..."
+                                aria-label="Search tasks">
+                        </div>
+
+                        <select id="filterStatus" aria-label="Filter by status">
+                            <option value="All">All statuses</option>
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+
+                    <div id="taskList" class="task-list"></div>
+                </div>
+            </section>
+
+            <footer>
+                Built with HTML, CSS & JavaScript
+                <span>·</span> Your tasks stay in your browser
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>
